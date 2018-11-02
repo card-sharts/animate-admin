@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Auth.css';
+import { connect } from 'react-redux';
+import { signin } from './actions';
+import { getUser } from './reducers';
 
 class Auth extends PureComponent {
   state = {
@@ -8,8 +11,19 @@ class Auth extends PureComponent {
     password: ''
   };
 
+  static propTypes = {
+    signin: PropTypes.func.isRequired
+  };
+
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
+  };
+
+  handleSubmit = () => {
+    event.preventDefault();
+    const { name, password } = this.state;
+    if(!name || !password) return;
+    this.props.signin(this.state);
   };
 
   render() { 
@@ -17,9 +31,22 @@ class Auth extends PureComponent {
 
     return (
       <section className={styles.auth}>
-        <form>
-          <input name="name" value={name} onChange={this.handleChange} placeholder="username"/>
-          <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="password"/>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            name="name"
+            value={name}
+            onChange={this.handleChange}
+            placeholder="username"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+            placeholder="password"
+            required
+          />
           <button>Sign In</button>
         </form>
       </section>
@@ -27,4 +54,9 @@ class Auth extends PureComponent {
   }
 }
  
-export default Auth;
+export default connect(
+  state => ({
+    user: getUser(state)
+  }),
+  { signin }
+)(Auth);
