@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './Auth.css';
 import { connect } from 'react-redux';
@@ -12,7 +13,9 @@ class Auth extends PureComponent {
   };
 
   static propTypes = {
-    signin: PropTypes.func.isRequired
+    signin: PropTypes.func.isRequired,
+    user: PropTypes.object,
+    location: PropTypes.object
   };
 
   handleChange = ({ target }) => {
@@ -28,6 +31,9 @@ class Auth extends PureComponent {
 
   render() { 
     const { email, password } = this.state;
+    const { user, location } = this.props;
+    const redirect = location.state ? location.state.from : '/dashboard';
+    if(user) return <Redirect to={redirect}/>;
 
     return (
       <section className={styles.auth}>
