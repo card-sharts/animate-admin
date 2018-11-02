@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from './Auth.css';
 import { connect } from 'react-redux';
@@ -7,12 +8,14 @@ import { getUser } from './reducers';
 
 class Auth extends PureComponent {
   state = {
-    name: '',
+    email: '',
     password: ''
   };
 
   static propTypes = {
-    signin: PropTypes.func.isRequired
+    signin: PropTypes.func.isRequired,
+    user: PropTypes.object,
+    location: PropTypes.object
   };
 
   handleChange = ({ target }) => {
@@ -21,22 +24,25 @@ class Auth extends PureComponent {
 
   handleSubmit = () => {
     event.preventDefault();
-    const { name, password } = this.state;
-    if(!name || !password) return;
+    const { email, password } = this.state;
+    if(!email || !password) return;
     this.props.signin(this.state);
   };
 
   render() { 
-    const { name, password } = this.state;
+    const { email, password } = this.state;
+    const { user, location } = this.props;
+    const redirect = location.state ? location.state.from : '/dashboard';
+    if(user) return <Redirect to={redirect}/>;
 
     return (
       <section className={styles.auth}>
         <form onSubmit={this.handleSubmit}>
           <input
-            name="name"
-            value={name}
+            name="email"
+            value={email}
             onChange={this.handleChange}
-            placeholder="username"
+            placeholder="email"
             required
           />
           <input
