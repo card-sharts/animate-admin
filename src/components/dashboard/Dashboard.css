@@ -1,0 +1,21 @@
+:local(.dashboard) {
+  height: 100vh;
+  border: 1px solid black;
+
+  display: grid;
+  width: 100%;
+  grid-template-areas: "head head"
+                       "nav main";
+  grid-template-rows: 5vh 1fr;
+  grid-template-columns: 30vw 1fr;
+
+  header {
+    grid-area: head;  
+  }
+  main {
+    grid-area: main;
+  }
+  NavBar {
+    grid-area: nav;
+  }
+} 

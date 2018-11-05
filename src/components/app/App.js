@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { tryLoadUser } from '../auth/actions';
 import { getCheckedAuth } from '../auth/reducers';
 import Dashboard from '../dashboard/Dashboard';
+import NavBar from '../dashboard/NavBar';
 
 class App extends PureComponent {
 
