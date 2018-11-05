@@ -38,6 +38,7 @@ class Auth extends PureComponent {
     return (
       <section className={styles.auth}>
         <form onSubmit={this.handleSubmit}>
+          <h3>Animate</h3>
           <input
             name="email"
             value={email}
@@ -59,7 +60,7 @@ class Auth extends PureComponent {
     );
   }
 }
- 
+
 export default connect(
   state => ({
     user: getUser(state)
