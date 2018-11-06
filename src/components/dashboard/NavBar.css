@@ -1,8 +1,22 @@
 :local(.essays) {
-  border: 1px solid blue;
+  background: grey;
   ul {
-    list-style-type: none;
     padding: 0;
+    list-style-type: none;
     text-decoration: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  p {
+    padding: 2vw;
+    font-size: 1.5em;
+  }
+
+  p:hover {
+    width: 100%;
+    background: green;
   }
 }

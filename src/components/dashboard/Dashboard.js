@@ -10,17 +10,17 @@ class Dashboard extends PureComponent {
   render() { 
     return (
       <Router>
-        <section className={styles.dashboard}>
+        <div className={styles.dashboard}>
           <header>
             <h1>Dashboard</h1>
           </header>
-          <NavBar/>
+          <NavBar id="nav-bar"/>
           <main>
             <Switch>
-              <Route exact path="/essays" component={Essays}/>
+              <Route exact path="/dashboard/essays" component={Essays}/>
             </Switch>
           </main>
-        </section>
+        </div>
       </Router>
     );
   }

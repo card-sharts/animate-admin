@@ -29,7 +29,7 @@ class App extends PureComponent {
           {checkedAuth &&
             <Switch>
               <Route exact path="/" component={Auth}/>
-              <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+              <PrivateRoute path="/dashboard" component={Dashboard}/>
               <Redirect to="/"/>
             </Switch>
           }

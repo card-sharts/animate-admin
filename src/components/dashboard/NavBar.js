@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './NavBar.css';
 
 class NavBar extends PureComponent {
@@ -7,9 +7,9 @@ class NavBar extends PureComponent {
     return (
       <nav className={styles.essays}>
         <ul>
-          <li><Link to="/essays">Essays</Link></li>
-          <li><Link to="/test">Test</Link></li>
-          <li><Link to="/anotherTest">Another Test</Link></li>
+          <li><NavLink to="/dashboard/essays"><p>Essays</p></NavLink></li>
+          <li><NavLink to="/test"><p>Test</p></NavLink></li>
+          <li><NavLink to="/anotherTest"><p>Another Test</p></NavLink></li>
         </ul>
       </nav>
     );
