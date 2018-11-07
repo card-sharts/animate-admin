@@ -5,16 +5,24 @@ import Essays from './Essays';
 import styles from './Dashboard.css';
 
 class Dashboard extends PureComponent {
-  state = {  };
+  state = {
+    navBar: false
+  };
+
+  toggleNavBar = () => {
+    console.log('in function');
+    this.setState(({ navBar }) => ({ navBar: !navBar }));
+  };
 
   render() { 
     return (
       <Router>
         <div className={styles.dashboard}>
           <header>
+            <button onClick={this.toggleNavBar} className="hamburger">&#9776;</button>
             <h1>Dashboard</h1>
           </header>
-          <NavBar id="nav-bar"/>
+          <NavBar navBar={this.state.navBar} id="nav-bar"/>
           <main>
             <Switch>
               <Route exact path="/dashboard/essays" component={Essays}/>

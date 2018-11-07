@@ -1,22 +1,37 @@
-:local(.essays) {
-  background: grey;
-  ul {
-    padding: 0;
-    list-style-type: none;
-    text-decoration: none;
+:local(.navBar) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    background: black;
+    width: 250px;
+    transition: all .5s ease;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    top: 75px;
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+  }
+
+  .open {
+    width: 250px;
+  }
+
+  .closed {
+    transform: translateX(-250px);
   }
 
   a {
     text-decoration: none;
-  }
-
-  p {
     padding: 2vw;
     font-size: 1.5em;
+    color: white;
   }
 
-  p:hover {
+  a:hover {
     width: 100%;
     background: green;
   }
+
 }
